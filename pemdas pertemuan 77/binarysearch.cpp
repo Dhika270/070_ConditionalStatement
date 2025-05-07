@@ -73,4 +73,11 @@ void binarySearch()
     cin >> x;
 
     int low = 0;
+    int high = nPanjang - 1;
+
+    do
+    {
+        int mid =(low )
+    } 
+    
 }
