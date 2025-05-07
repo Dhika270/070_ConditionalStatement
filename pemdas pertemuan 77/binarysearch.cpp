@@ -53,8 +53,13 @@ void display()
     cout << "\n==========================================\n";
     cout << "    Elemen Array Setelah Diurutkan (Asc)    \n";
     cout << "==========================================\n";
-    fot (int j = 0; j < nPanjang; j++)
+    for (int j = 0; j < nPanjang; j++)
     {
-        cout
+        cout << element[j];
+        if (j < nPanjang - 1)
+        {
+            cout << " --> ";
+        }
     }
+    cout << endl;
 }
