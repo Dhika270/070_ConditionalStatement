@@ -1,20 +1,20 @@
-//070_singLeLinkedlist
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 class Node
 {
-    public:
-        int noMhs;
-        Node *next;
-
+public:
+    int noMhs;
+    Node *next;
 };
 
 class LinkedList
 {
+private:
     Node *START;
 
-    public:
+public:
     LinkedList()
     {
         START = NULL;
@@ -23,15 +23,16 @@ class LinkedList
     void addNode()
     {
         int nim;
-        cout << "\nMasukkan Nomor Mahasiswa:";
+        cout << "\nMasukkan Nomor Mahasiswa: ";
         cin >> nim;
 
         Node *nodeBaru = new Node;
         nodeBaru->noMhs = nim;
+        nodeBaru->next = NULL;
 
         if (START == NULL || nim <= START->noMhs)
         {
-            if((START != NULL ) && (nim == START->noMhs))
+            if ((START != NULL) && (nim == START->noMhs))
             {
                 cout << "\nDuplikasi noMhs tidak diijinkan\n";
                 return;
@@ -41,21 +42,22 @@ class LinkedList
             return;
         }
 
-        Node *Previous = START;
+        Node *previous = START;
         Node *current = START;
-        while ((current != NULL) && (nim >= current ->noMhs))
+
+        while ((current != NULL) && (nim >= current->noMhs))
         {
-            if(nim == current ->noMhs)
+            if (nim == current->noMhs)
             {
-            cout << "\nDuplikasi noMhs tidak diijinkan\n";
-            return; 
+                cout << "\nDuplikasi noMhs tidak diijinkan\n";
+                return;
             }
-            Previous = current;
+            previous = current;
             current = current->next;
         }
 
         nodeBaru->next = current;
-        Previous->next = nodeBaru;
+        previous->next = nodeBaru;
     }
 
     bool listEmpty()
@@ -63,18 +65,17 @@ class LinkedList
         return (START == NULL);
     }
 
-    bool Search(int nim, Node **Previous, Node ** current)
+    bool Search(int nim, Node *&previous, Node *&current)
     {
-        *Previous = START;
-        *current = START;
+        previous = START;
+        current = START;
 
-        while ((*current != NULL) && (nim != (*current)-> noMhs))
+        while ((current != NULL) && (nim != current->noMhs))
         {
-            *Previous = *current;
-            *current = (*current)->next;
+            previous = current;
+            current = current->next;
         }
-
-        return (*current !=NULL);
+        return (current != NULL);
     }
 
     bool delNode(int nim)
