@@ -57,4 +57,23 @@ class LinkedList
         nodeBaru->next = current;
         Previous->next = nodeBaru;
     }
+
+    bool listEmpty()
+    {
+        return (START == NULL);
+    }
+
+    bool Search(int nim, Node **Previous, Node ** current)
+    {
+        *Previous = START;
+        *current = START;
+
+        while ((*current != NULL) && (nim != (*current)-> noMhs))
+        {
+            *Previous = *current;
+            *current = (*current)->next;
+        }
+
+        return (*current !=NULL);
+    }
 }
