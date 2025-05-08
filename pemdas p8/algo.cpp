@@ -34,7 +34,7 @@ class LinkedList
             if((START != NULL ) && (nim == START->noMhs))
             {
                 cout << "\nDuplikasi noMhs tidak diijinkan\n";
-                retun;
+                return;
             }
             nodeBaru->next = START;
             START = nodeBaru;
@@ -50,8 +50,11 @@ class LinkedList
             cout << "\nDuplikasi noMhs tidak diijinkan\n";
             return; 
             }
-            previous = current;
+            Previous = current;
             current = current->next;
         }
+
+        nodeBaru->next = current;
+        Previous->next = nodeBaru;
     }
 }
